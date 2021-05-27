@@ -1,0 +1,28 @@
+<h1>Hey User Events </h1>
+<h1>
+  Microverse Project: Private-Events
+</h1>
+
+<% @events.each do |event|%>
+<% if user_signed_in? %>
+  <h3>Creator_email: </h3><%= current_user.email%>
+<%end%>
+  <h3>Title: </h3><%= event.title %>
+  <h3>Body: </h3><%= event.body %>
+  <h3>Location: </h3><%= event.location %>
+  <h3>Date: </h3><%= event.date %>
+  ----------------------
+<% end %>
+
+<% if user_signed_in? %>
+  <p class="control">
+
+  <p>
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "button is-info" %>
+<% else %>
+  <p class="control">
+    <%= link_to 'Sign In', new_user_session_path, class: "button is-info"%>
+  <p class="control">
+    <%= link_to 'Sign Up', new_user_registration_path, class: "button is-info"%>
+  </p>
+<% end %>
