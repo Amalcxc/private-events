@@ -1,0 +1,13 @@
+<%= params %>
+<h1>User Events</h1>
+<% if user_signed_in? %>
+  <% current_user.events.each do |event|%>
+    <h3>Title: </h3><%= event.title%>
+  <%end%>
+<%end %>
+<br><br>
+----
+<br><br>
+<% if user_signed_in? %>
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "button is-info" %>
+<% end %>

@@ -1,5 +1,15 @@
 <h1>Users</h1>
 
 <% @users.each do |user|%>
-  <%= user.email%>
+  <%= link_to user.email, event_path(user)%><br><br>
+<% end %>
+<% if user_signed_in? %>
+
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "button is-info" %>
+<% else %>
+  <p class="control">
+    <%= link_to 'Sign In', new_user_session_path, class: "button is-info"%>
+  <p class="control">
+    <%= link_to 'Sign Up', new_user_registration_path, class: "button is-info"%>
+  </p>
 <% end %>
