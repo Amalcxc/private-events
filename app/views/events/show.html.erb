@@ -1,4 +1,3 @@
-<%= params %>
 <h1>User Events</h1>
 <%@user.events.each do |event|%>
   <h3>Title:</h3><%=event.title%>
@@ -13,6 +12,10 @@
   <br><br>
 <%end%>
 
+<% if user_signed_in? && params[:id].to_i == current_user.id %>
+  
+  <%= link_to 'Create Event', new_event_path %>
+<% end %>
 <br><br>
 
 <% if user_signed_in? %>
