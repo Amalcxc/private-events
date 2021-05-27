@@ -3,11 +3,11 @@ class EventsController < ApplicationController
   end
 
   def show
-    @users = User.event.find_by(id: event_params)
+    @user = event_params
   end
 
   private
   def event_params
-    params.require(:events).permit(:id)
+    @user = User.find_by(id: params[:id])
   end
 end

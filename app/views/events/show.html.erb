@@ -1,13 +1,20 @@
 <%= params %>
 <h1>User Events</h1>
-<% if user_signed_in? %>
-  <% current_user.events.each do |event|%>
-    <h3>Title: </h3><%= event.title%>
-  <%end%>
-<%end %>
+<%@user.events.each do |event|%>
+  <h3>Title:</h3><%=event.title%>
+  <br><br>
+  <h3>Body:</h3><%=event.body%>
+  <br><br>
+  <h3>Location:</h3><%=event.location%>
+  <br><br>
+  <h3>Date:</h3><%=event.date%>
+  <br><br>
+  ----
+  <br><br>
+<%end%>
+
 <br><br>
-----
-<br><br>
+
 <% if user_signed_in? %>
   <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "button is-info" %>
 <% end %>
