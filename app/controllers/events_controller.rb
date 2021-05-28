@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   def index
+    @user = event_params
   end
 
   def new
