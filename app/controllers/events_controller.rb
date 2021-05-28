@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   def index
-    @user = event_params
+    @users = User.all
   end
 
   def new
@@ -8,7 +8,9 @@ class EventsController < ApplicationController
   end
 
   def show
-    @user = event_params
+    @event = event_params
+    @user = User.where(id: @event.creator_id)
+
   end
 
   def create
@@ -28,7 +30,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    @user = User.find_by(id: params[:id])
+    @event = Event.find_by(id: params[:id])
   end
 
   def params_e

@@ -1,1 +1,8 @@
-
+<h1>Event Details</h1>
+<% @user.each do |user|%>
+  <strong>Author: </strong><%= user.email%>
+<%end%><br><br>
+<strong>Title: </strong><%= @event.title%> <br><br>
+<strong>Body: </strong><%= @event.body%> <br><br>
+<strong>Location: </strong><%= @event.location%> <br><br>
+<strong>Date: </strong><%= @event.date%><br><br>
