@@ -1,6 +1,4 @@
 <h1>User Events</h1>
-<%= current_user.id%>
-<%= params%>
   <% @users.each do |user| %>
     <% user.events.each do |event|%>
       <h3>Title: </h3><%=link_to event.title, event_path(event.id)%> <br><br>
