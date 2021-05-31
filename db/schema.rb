@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2021_05_29_153326) do
 
   create_table "lists", force: :cascade do |t|
     t.integer "attendee_id"
-    t.string "attended_event_id"
+    t.integer "attended_event_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
