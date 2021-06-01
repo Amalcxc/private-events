@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   def index
-    @users = User.all  
+    @users = User.all
   end
 
   def new
@@ -17,7 +17,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to root_path, notice: "Tweet was successfully created." }
+        format.html { redirect_to root_path, notice: 'Tweet was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new, status: :unprocessable_entity }
