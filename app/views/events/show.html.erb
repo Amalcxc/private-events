@@ -6,3 +6,14 @@
 <strong>Body: </strong><%= @event.body%> <br><br>
 <strong>Location: </strong><%= @event.location%> <br><br>
 <strong>Date: </strong><%= @event.date%><br><br>
+<strong>Attendees:</strong>
+ <% @event.attendants.each do |attendant| %>
+    <%= attendant.email %>
+ <% end %>
+<div class="attend-link">
+  <% if current_user %>
+    <%= link_to 'Attend', attend_path, method: :post %>
+  <% end %>
+</div>
+
+   

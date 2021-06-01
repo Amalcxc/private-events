@@ -1,10 +1,11 @@
 class ListsController < ApplicationController
-  def attended
-    @event = Event.find_by_id(params[:id])
-    attentee = current_user.event_attendees.create(attended_event_id: @event.id)
-    if attentee.save
+  def attend
+    @event = Event.find_by(id: params[:id])
+    r = current_user.lists.build(attended_event_id: @event.id)
+    if r.save
       redirect_to @event
     else
-      redirect_to @event, notice: 'User already attending'
+      redirect_to @event, notice: 'already attending'
+    end
   end
 end

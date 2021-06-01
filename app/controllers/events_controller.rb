@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   def index
-    @users = User.all
+    @users = User.all  
   end
 
   def new
@@ -10,7 +10,6 @@ class EventsController < ApplicationController
   def show
     @event = event_params
     @user = User.where(id: @event.creator_id)
-
   end
 
   def create
