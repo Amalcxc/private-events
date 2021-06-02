@@ -1,16 +1,7 @@
 
 <p>
   <strong>Email:</strong>
-  <em><%= @user.email %></em>
-</p>
-
-<p>
-  <strong>Hosted:</strong>
-  <ul>
-  <% @user.events.each do |event| %>
-    <li><%= link_to event.title, event %></li>
-  <% end %>
-  </ul>
+  <em><%= current_user.email %></em>
 </p>
 
 <p>
@@ -18,17 +9,18 @@
   <br><br>
   <span>Past</span>
   <ul>
-  <% @user.attended_events.where("date < '#{Time.now}'").each do |past_event| %>    
+  <% @past_events.where("date < '#{Time.now}'").each do |past_event| %>    
     <li><%= link_to past_event.title, past_event %></li>
   <% end %>
   </ul>
   <span>Future</span>
   <ul>
-  <% @user.attended_events.where("date >= '#{Time.now}'").each do |future_event| %>    
+  <% @upcoming_events.where("date >= '#{Time.now}'").each do |future_event| %>    
     <li><%= link_to future_event.title, future_event %></li>
   <% end %>
   </ul>
 </p>
+
 
 <% if current_user == @user %>
   <td><%= link_to 'Edit', edit_user_registration_path %></td>
