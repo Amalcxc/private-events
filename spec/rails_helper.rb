@@ -1,13 +1,15 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
-require 'capybara/rspec'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
-abort('The Rails environment is running in production mode!') if Rails.env.production?
+include Warden::Test::Helpers
+abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require "capybara/rspec"
+require "devise"
 # Add additional requires below this line. Rails is not loaded until this point!
-require 'devise'
+
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -32,15 +34,17 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
-  config.include Warden::Test::Helpers
-  config.include Devise::Test::ControllerHelpers, type: :controller
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
+  config.include Devise::TestHelpers, :type => :controller
   config.use_transactional_fixtures = true
+  config.include Capybara::DSL
+ 
+ 
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
