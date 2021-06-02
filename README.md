@@ -29,11 +29,13 @@
 - you can look at all the events that are created by click on the see all events link
 - to attend the event click on the title and press the attend link on the end 
 - and leave click on logout link 
+-  to test run rspec 
 
 ### Build With
 
 - Ruby 
 - Rails
+- Rspec
 - SQL
 
 ### You can deploy this project forking it on GitHub and then going to:
