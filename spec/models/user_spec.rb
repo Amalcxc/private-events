@@ -8,7 +8,7 @@ describe 'the signin process', type: :feature do
   it 'checks the user exists' do
     expect(User.last.email).to have_content 'user@example.com'
   end
-  
+
   it 'signs me in' do
     visit '/users/sign_in'
     within('#new_user') do

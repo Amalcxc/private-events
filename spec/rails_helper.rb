@@ -3,11 +3,11 @@ require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
-include Warden::Test::Helpers
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
-require "capybara/rspec"
-require "devise"
+require 'capybara/rspec'
+require 'devise'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -40,12 +40,10 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.include Devise::TestHelpers, :type => :controller
+  config.include Devise::TestHelpers, type: :controller
   config.use_transactional_fixtures = true
   config.include Capybara::DSL
- 
- 
-
+  include Warden::Test::Helpers
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
 

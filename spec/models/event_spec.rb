@@ -7,7 +7,7 @@ RSpec.describe Event, type: :model do
 
   it 'succeeds when creating an event with an user' do
     user = User.create(email: 'email@email.com', password: '1234567')
-    event = Event.create(title: 'Meeting', date: '01/01/2001', body: 'this is an event for you', location: 'turkey', creator_id: user.id )
+    event = Event.create(title: 'Meeting', date: '01/01/2001', body: 'this is an event for you', location: 'turkey', creator_id: user.id)
     expect(event).to eq(Event.first)
-  end  
+  end
 end
