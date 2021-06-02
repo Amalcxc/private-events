@@ -1,0 +1,27 @@
+<h1>User Events</h1>
+  <% @users.each do |user| %>
+    <% user.events.each do |event|%>
+      <h3>Title: </h3><%=link_to event.title, event_path(event.id)%> <br><br>
+    <%end%>
+  <%end%>
+
+  <h3>past events <h3>
+  <% @past_events.each do |event| %>
+    <h4>Title: </h4><%=link_to event.title, event_path(event.id)%>
+    <h4>attendants <%= event.attendants.count%></h4>
+  <% end %>
+
+<h3>upcoming events <h3>
+  <% @upcoming_events.each do |event| %>
+    <h4>Title: </h4><%=link_to event.title, event_path(event.id)%>
+    <h4>attendants <%= event.attendants.count%></h4>
+  <% end %>
+ <br><br>
+
+<% if params[:id].to_i == current_user.id %>
+  <%= link_to 'Create', new_event_path %> 
+<% end %>
+
+<% if user_signed_in? %>
+  <%= link_to "Logout", destroy_user_session_path, method: :delete%>
+<% end %>

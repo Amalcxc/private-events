@@ -1,0 +1,14 @@
+<h1>Users</h1>
+
+<%= link_to 'See All events ', all_events_path%><br><br>
+
+<% if user_signed_in? %>
+  <%= link_to 'Create New Event', new_event_path %><br><br>
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "button is-info" %>
+<% else %>
+  <p >
+    <%= link_to 'Sign In', new_user_session_path%>
+  <p >
+    <%= link_to 'Sign Up', new_user_registration_path%>
+  </p>
+<% end %>
